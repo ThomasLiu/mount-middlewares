@@ -3,7 +3,7 @@ var requireDirectory = require('require-directory')
 var debug = require('debug')('mount-middlewares')
 
 function m (dir) {
-  var a = dir.split('app')
+  var a = dir.split('/app')
   
   if (a.length > 1) {
     a.pop()
@@ -15,7 +15,7 @@ function m (dir) {
     
     throw "mount-middlewares ERROR: " + dir + "里没有app目录"
   }
-  var _dir = a[0] + "app/middlewares"
+  var _dir = a[0] + "/app/middlewares"
   debug(_dir)
   return requireDirectory(module, _dir)
 }
